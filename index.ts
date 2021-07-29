@@ -10,7 +10,7 @@ import { RoleAssignmentData } from "@polusgg/plugin-polusgg-api/src/services/rol
 import { ServiceType } from "@polusgg/plugin-polusgg-api/src/types/enums";
 
 const pluginMetadata: PluginMetadata = {
-  name: "Polus.gg Template Plugin",
+  name: "Vanilla",
   version: [1, 0, 0],
   authors: [
     {
@@ -35,20 +35,22 @@ export default class extends BaseMod {
       {
         role: Crewmate,
         playerCount: lobby.getPlayers().length - gameOptions.getOption("Impostor Count").getValue().value,
-        assignWith: RoleAlignment.Crewmate
+        assignWith: RoleAlignment.Crewmate,
       },
       {
         role: Impostor,
         playerCount: gameOptions.getOption("Impostor Count").getValue().value,
-        assignWith: RoleAlignment.Impostor
-      }
-    ]
+        assignWith: RoleAlignment.Impostor,
+      },
+    ];
   }
 
-  getEnabled(lobby: LobbyInstance): boolean {
+  getEnabled(_lobby: LobbyInstance): boolean {
     return true;
   }
 
-  async onEnable(lobby: LobbyInstance): Promise<void> { }
-  async onDisable(lobby: LobbyInstance): Promise<void> {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async onEnable(_lobby: LobbyInstance): Promise<void> { }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async onDisable(_lobby: LobbyInstance): Promise<void> { }
 }
