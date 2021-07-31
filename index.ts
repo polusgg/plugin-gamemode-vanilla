@@ -45,10 +45,6 @@ export default class extends BaseMod {
     ];
   }
 
-  getEnabled(_lobby: LobbyInstance): boolean {
-    return true;
-  }
-
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   async onEnable(_lobby: LobbyInstance): Promise<void> { }
   // eslint-disable-next-line @typescript-eslint/no-empty-function
