@@ -34,12 +34,12 @@ export default class extends BaseMod {
     return [
       {
         role: Crewmate,
-        playerCount: lobby.getPlayers().length - gameOptions.getOption("Impostor Count").getValue().value,
+        playerCount: lobby.getPlayers().length - gameOptions.getOption("<color=#ff1919>Impostor</color> Count").getValue().value,
         assignWith: RoleAlignment.Crewmate,
       },
       {
         role: Impostor,
-        playerCount: gameOptions.getOption("Impostor Count").getValue().value,
+        playerCount: gameOptions.getOption("<color=#ff1919>Impostor</color> Count").getValue().value,
         assignWith: RoleAlignment.Impostor,
       },
     ];
