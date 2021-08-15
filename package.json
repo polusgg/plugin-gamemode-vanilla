@@ -1,22 +1,22 @@
 {
-  "name": "@polusgg/plugin-template",
+  "name": "@polusgg/plugin-gamemode-vanilla",
   "np-plugin": true,
   "version": "1.0.0",
-  "description": "Template repository for creating plugins with NodePolus",
+  "description": "Polus.gg vanilla gamemode plugin for NodePolus ",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/polusgg/plugin-template.git"
+    "url": "git+https://github.com/polusgg/plugin-gamemode-vanilla.git"
   },
   "author": "Polus.gg",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/polusgg/plugin-template/issues"
+    "url": "https://github.com/polusgg/plugin-gamemode-vanilla/issues"
   },
-  "homepage": "https://github.com/polusgg/plugin-template",
+  "homepage": "https://github.com/polusgg/plugin-gamemode-vanilla",
   "devDependencies": {
     "@types/node": "^14.14.22",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
@@ -26,7 +26,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@nodepolus/framework": "../nodepolus-framework",
-    "@polusgg/plugin-polusgg-api": "../plugin-polusgg-api"
+    "@nodepolus/framework": "latest",
+    "@polusgg/plugin-polusgg-api": "latest"
   }
 }
