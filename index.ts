@@ -1,3 +1,4 @@
+import { Game } from "@nodepolus/framework/src/api/game";
 import { LobbyInstance } from "@nodepolus/framework/src/api/lobby";
 import { PluginMetadata } from "@nodepolus/framework/src/api/plugin";
 import { BaseMod } from "@polusgg/plugin-polusgg-api/src/baseMod/baseMod";
@@ -6,7 +7,6 @@ import { Crewmate } from "@polusgg/plugin-polusgg-api/src/baseRole/crewmate/crew
 import { Impostor } from "@polusgg/plugin-polusgg-api/src/baseRole/impostor/impostor";
 import { Services } from "@polusgg/plugin-polusgg-api/src/services";
 import { LobbyDefaultOptions } from "@polusgg/plugin-polusgg-api/src/services/gameOptions/gameOptionsService";
-import { RoleAssignmentData } from "@polusgg/plugin-polusgg-api/src/services/roleManager/roleManagerService";
 import { ServiceType } from "@polusgg/plugin-polusgg-api/src/types/enums";
 
 const pluginMetadata: PluginMetadata = {
@@ -28,13 +28,13 @@ export default class extends BaseMod {
     super(pluginMetadata);
   }
 
-  getRoles(lobby: LobbyInstance): RoleAssignmentData[] {
-    const gameOptions = Services.get(ServiceType.GameOptions).getGameOptions<LobbyDefaultOptions>(lobby);
+  assignRoles(game: Game): void {
+    const gameOptions = Services.get(ServiceType.GameOptions).getGameOptions<LobbyDefaultOptions>(game.getLobby());
 
-    return [
+    const assignmentData = [
       {
         role: Crewmate,
-        playerCount: lobby.getPlayers().length - gameOptions.getOption("Impostor Count").getValue().value,
+        playerCount: game.getLobby().getPlayers().length - gameOptions.getOption("Impostor Count").getValue().value,
         assignWith: RoleAlignment.Crewmate,
       },
       {
@@ -43,6 +43,8 @@ export default class extends BaseMod {
         assignWith: RoleAlignment.Impostor,
       },
     ];
+
+    Services.get(ServiceType.RoleManager).assignRoles(game, assignmentData);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
