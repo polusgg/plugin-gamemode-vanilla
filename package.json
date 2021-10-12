@@ -1,7 +1,7 @@
 {
   "name": "@polusgg/plugin-gamemode-vanilla",
   "np-plugin": true,
-  "version": "1.0.1-0",
+  "version": "1.0.1-1",
   "description": "Polus.gg vanilla gamemode plugin for NodePolus ",
   "scripts": {
     "lint": "eslint . --ext .ts",
